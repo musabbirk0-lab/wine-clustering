@@ -1,29 +1,29 @@
 
-```markdown
-# Customer Segmentation with K-Means Clustering
+# Wine Clustering – Fully Optimized K-Means
 
-Cluster mall customers based on age, income, and spending score to identify meaningful segments for targeted marketing. This project includes preprocessing, scaling, optimal cluster selection, K-Means clustering, and deployment via Streamlit for interactive predictions.
+Cluster wine samples using a fully optimized K-Means clustering pipeline on the built-in sklearn Wine dataset. Includes preprocessing, scaling, silhouette-based optimal cluster selection, hyperparameter tuning, elbow visualization, and an interactive Streamlit app for cluster predictions.
 
 ---
 
 ## 🚀 Features
 
-- **Data Preprocessing:** Handle numeric features and scale them for clustering.  
-- **Optimal Cluster Selection:** Elbow Method & Silhouette Score to choose the best number of clusters.  
-- **Clustering:** K-Means with 5 optimized clusters.  
-- **Visualization:** 3D scatter plot of clusters.  
-- **Deployment:** Streamlit app for interactive cluster predictions.
+- Data preprocessing and scaling (StandardScaler)  
+- Hyperparameter tuning for KMeans clusters  
+- Silhouette Score to select the best number of clusters  
+- Elbow Method visualization for reference  
+- Saves trained model, scaler, and cluster-labeled dataset  
+- Streamlit app for interactive cluster predictions  
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Python**  
-- **Pandas & NumPy** (data manipulation)  
-- **Scikit-learn** (KMeans, preprocessing, scaling)  
-- **Matplotlib & Seaborn** (visualization)  
-- **Streamlit** (interactive web app)  
-- **Joblib** (save/load model & scaler)
+- Python  
+- Pandas & NumPy  
+- Scikit-learn (KMeans, preprocessing)  
+- Matplotlib & Seaborn (visualizations)  
+- Streamlit (interactive app)  
+- Joblib (save/load model & scaler)  
 
 ---
 
@@ -36,7 +36,7 @@ Cluster mall customers based on age, income, and spending score to identify mean
 1. Clone the repository:
 ```bash
 git clone <your-github-repo-url>
-cd customer-clustering
+cd wine-clustering
 ````
 
 2. Install dependencies:
@@ -45,27 +45,32 @@ cd customer-clustering
 pip install -r requirements.txt
 ```
 
-3. Run the Streamlit app:
+3. Train model (optional if using saved artifacts):
 
 ```bash
-streamlit run streamlit_clustering.py
+python train.py
 ```
 
-4. Input customer details in the app and get predicted cluster.
+4. Run Streamlit app:
+
+```bash
+streamlit run streamlit_app.py
+```
+
+5. Use sliders to input wine features and get cluster prediction.
 
 ---
 
 ## 📈 Evaluation
 
-* Clusters are validated using **Silhouette Score**.
-* Visualized in 3D for age, annual income, and spending score.
-* Helps identify high-value or low-engagement customer segments.
+* Silhouette Score used to evaluate cluster quality
+* Elbow Method visualizes WCSS for reference
+* Clusters represent groups of wines with similar chemical properties
 
 ---
 
 ## 💡 Notes
 
-* Preprocessing and scaling are saved using **Joblib** for deployment.
-* Streamlit app is fully interactive for real-time cluster predictions.
-* Dataset used: [Mall Customers Dataset](https://www.kaggle.com/vjchoudhary7/customer-segmentation-tutorial-in-python)
+* Model, scaler, and cluster-labeled dataset are saved in the `artifacts/` folder for deployment
+* Streamlit app allows interactive predictions for any new wine sample
 
